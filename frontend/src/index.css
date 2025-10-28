@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	@apply bg-gradient-to-b from-emerald-50 via-white to-emerald-50 text-gray-900;
+	font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+h1 {
+	@apply text-3xl font-bold mb-4 text-green-700;
+}
+
+.soil-checker h2 {
+	@apply text-2xl font-semibold mb-2;
+}
+
+form {
+	@apply space-y-6 bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-sm border border-gray-200;
+}
+
+.form-section {
+	@apply space-y-3;
+}
+
+label {
+	@apply block text-sm font-medium text-gray-700;
+}
+
+/* Elegant inputs */
+input[type="number"],
+input[type="text"],
+select {
+	@apply mt-1 block w-full rounded-lg border border-gray-300 bg-white shadow-sm transition-colors duration-150 ease-out;
+}
+
+/* Compact width helper */
+.compact-input { @apply w-full max-w-xs; }
+
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus {
+	@apply border-emerald-600 ring-2 ring-emerald-200 outline-none;
+}
+
+/* Buttons */
+button[type="submit"] {
+	@apply mt-4 inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-gradient-to-r from-emerald-600 to-green-600 text-white hover:from-emerald-700 hover:to-green-700 disabled:opacity-50 shadow-sm transition-colors;
+}
+
+button.btn-secondary {
+	@apply inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-gray-100 text-gray-800 hover:bg-gray-200 border border-gray-200 shadow-sm;
+}
+
+/* Card groups */
+.card {
+	@apply bg-white rounded-xl shadow-sm border border-gray-200 p-6;
+}
+
+.helper {
+	@apply text-xs text-gray-500;
+}
+
+.result-section {
+	@apply mt-8 space-y-6;
+}
+
+.result-section h4 {
+	@apply text-xl font-semibold;
+}
+
+.result-section h5 {
+	@apply text-lg font-semibold;
+}
+
+/* Animated field */
+@keyframes wave {
+	0%, 100% { transform: rotate(0deg); }
+	50% { transform: rotate(2deg); }
+}
+@keyframes waveB {
+	0%, 100% { transform: rotate(0deg); }
+	50% { transform: rotate(-2deg); }
+}
+.wave-row { animation: wave 4s ease-in-out infinite; }
+.wave-row.delay { animation: waveB 5s ease-in-out infinite; }
+
+.blade { filter: drop-shadow(0 0 1px rgba(16,185,129,0.25)); }
+
+@keyframes cloudMove {
+	0% { transform: translateX(0); opacity: .4; }
+	100% { transform: translateX(140%); opacity: .4; }
+}
+.cloud {
+	position: absolute;
+	width: 160px;
+	height: 64px;
+	background: radial-gradient(closest-side, #ffffff 80%, transparent 81%) 32px 32px/64px 64px repeat-x,
+	            radial-gradient(closest-side, #ffffff 80%, transparent 81%) 0 0/64px 64px repeat-x;
+	opacity: .5;
+	animation: cloudMove 30s linear infinite;
+}
+.cloud.cloud-sm { width: 100px; height: 40px; opacity: .4; animation-duration: 24s; } 
