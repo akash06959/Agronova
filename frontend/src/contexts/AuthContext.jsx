@@ -1,6 +1,7 @@
 import { createContext, useContext, useReducer, useEffect } from 'react';
 
 const AuthContext = createContext();
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://agronova-ml0a.onrender.com';
 
 const authReducer = (state, action) => {
   switch (action.type) {
@@ -96,7 +97,7 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: 'LOGIN_START' });
     
     try {
-      const response = await fetch('http://localhost:8000/auth/login', {
+      const response = await fetch(`${API_BASE}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -162,7 +163,7 @@ export const AuthProvider = ({ children }) => {
     try {
       // Try backend API first
       console.log('AuthContext: Making API call to register endpoint');
-      const response = await fetch('http://localhost:8000/auth/register', {
+      const response = await fetch(`${API_BASE}/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

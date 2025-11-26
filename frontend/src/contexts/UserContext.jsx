@@ -39,7 +39,7 @@ const initialState = {
 
 export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(userReducer, initialState);
-  const apiBase = import.meta.env.VITE_API_BASE || 'http://localhost:8000';
+  const apiBase = import.meta.env.VITE_API_BASE || 'https://agronova-ml0a.onrender.com';
 
   // Load users from backend
   useEffect(() => {

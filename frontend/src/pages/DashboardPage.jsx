@@ -4,6 +4,8 @@ import { useAuth } from "../contexts/AuthContext";
 import { useCart } from "../contexts/CartContext";
 import { Link } from "react-router-dom";
 
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://agronova-ml0a.onrender.com';
+
 export default function DashboardPage() {
   const { user, logout } = useAuth();
   const { cart, wishlist, getCartTotal, getCartItemsCount, getWishlistCount } = useCart();
@@ -47,7 +49,7 @@ export default function DashboardPage() {
     setMessage('');
     
     try {
-      const response = await fetch('http://localhost:8000/users/me', {
+      const response = await fetch(`${API_BASE}/users/me`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

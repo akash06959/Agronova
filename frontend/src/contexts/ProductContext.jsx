@@ -244,7 +244,7 @@ const defaultProducts = [
 
 export const ProductProvider = ({ children }) => {
   const [state, dispatch] = useReducer(productReducer, initialState);
-  const apiBase = import.meta.env.VITE_API_BASE || 'http://localhost:8000';
+  const apiBase = import.meta.env.VITE_API_BASE || 'https://agronova-ml0a.onrender.com';
 
   // Load products from backend (fallback to localStorage/default)
   useEffect(() => {

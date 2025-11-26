@@ -3,9 +3,11 @@ import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://agronova-ml0a.onrender.com';
+
 // Create an axios instance with comprehensive configuration
 const api = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: API_BASE,
   timeout: 10000,  // 10 seconds timeout
   headers: {
     'Content-Type': 'application/json',

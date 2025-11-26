@@ -5,6 +5,8 @@ import { useAuth } from "../contexts/AuthContext";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://agronova-ml0a.onrender.com';
+
 export default function PaymentPage() {
   const { cart, clearCart, getCartTotal } = useCart();
   const { showSuccessNotification } = useNotification();
@@ -337,7 +339,7 @@ export default function PaymentPage() {
       }
 
       // Save order to database
-      const response = await fetch(`http://localhost:8000/orders/?user_id=${user?.id}`, {
+      const response = await fetch(`${API_BASE}/orders/?user_id=${user?.id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

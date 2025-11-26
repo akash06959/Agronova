@@ -7,7 +7,7 @@ export default defineConfig({
 	server: {
 		proxy: {
 			'/auth': {
-				target: 'http://localhost:8000',
+				target: 'https://agronova-ml0a.onrender.com/',
 				changeOrigin: true,
 				secure: false
 			},

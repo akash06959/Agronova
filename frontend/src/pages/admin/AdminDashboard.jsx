@@ -5,6 +5,8 @@ import { useUsers } from "../../contexts/UserContext";
 import { useProducts } from "../../contexts/ProductContext";
 import { Link } from "react-router-dom";
 
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://agronova-ml0a.onrender.com';
+
 export default function AdminDashboard() {
   const { admin } = useAdminAuth();
   const { users } = useUsers();
@@ -18,7 +20,7 @@ export default function AdminDashboard() {
 
   const fetchOrders = async () => {
     try {
-      const response = await fetch('http://localhost:8000/orders/admin/all');
+      const response = await fetch(`${API_BASE}/orders/admin/all`);
       if (response.ok) {
         const data = await response.json();
         setOrders(data);

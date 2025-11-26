@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { useAdminAuth } from "../../contexts/AdminAuthContext";
 import { Link } from "react-router-dom";
 
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://agronova-ml0a.onrender.com';
+
 export default function AdminOrdersPage() {
   const { admin } = useAdminAuth();
   const [orders, setOrders] = useState([]);
@@ -16,7 +18,7 @@ export default function AdminOrdersPage() {
 
   const fetchAllOrders = async () => {
     try {
-      const response = await fetch('http://localhost:8000/orders/admin/all');
+      const response = await fetch(`${API_BASE}/orders/admin/all`);
       if (response.ok) {
         const data = await response.json();
         console.log('Fetched all orders:', data);
@@ -79,7 +81,7 @@ export default function AdminOrdersPage() {
 
   const updateOrderStatus = async (orderId, newStatus) => {
     try {
-      const response = await fetch(`http://localhost:8000/orders/${orderId}/status`, {
+      const response = await fetch(`${API_BASE}/orders/${orderId}/status`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'

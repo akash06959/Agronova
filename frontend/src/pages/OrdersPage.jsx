@@ -4,6 +4,8 @@ import { useAuth } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import { useNotification } from "../contexts/NotificationContext";
 
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://agronova-ml0a.onrender.com';
+
 export default function OrdersPage() {
   const { user } = useAuth();
   const { showSuccessNotification } = useNotification();
@@ -20,7 +22,7 @@ export default function OrdersPage() {
 
   const fetchOrders = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/orders/user/${user.id}`);
+      const response = await fetch(`${API_BASE}/orders/user/${user.id}`);
       if (response.ok) {
         const data = await response.json();
         console.log('Fetched orders:', data);
@@ -94,7 +96,7 @@ export default function OrdersPage() {
     setCancellingOrderId(orderId);
     
     try {
-      const response = await fetch(`http://localhost:8000/orders/${orderId}/cancel?user_id=${user.id}`, {
+      const response = await fetch(`${API_BASE}/orders/${orderId}/cancel?user_id=${user.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
