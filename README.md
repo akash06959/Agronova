@@ -30,6 +30,24 @@ npm run dev
 ```
 App will run at `http://127.0.0.1:5173` (default Vite port).
 
+## Streamlit App (Optional)
+A lightweight Streamlit UI is available for quickly demoing the Kerala AI assistant without running the FastAPI + React stack.
+
+### Local Run
+```bash
+pip install -r requirements.txt
+streamlit run streamlit_app.py
+```
+The Streamlit dashboard mirrors the backend models and can be hosted on Streamlit Community Cloud.
+
+### Deploy on Streamlit Cloud
+1. Push this repository (including `ml_model/` artifacts) to GitHub.
+2. Sign in at [share.streamlit.io](https://share.streamlit.io) and create a **New app**.
+3. Select your repo/branch and set **Main file path** to `streamlit_app.py`.
+4. Leave the default packages install command (`pip install -r requirements.txt`). Streamlit will install backend + frontend dependencies plus `streamlit`.
+5. (Optional) Add secrets/environment variables in the Streamlit dashboard if you point the app to external databases instead of the bundled SQLite DB.
+6. Deploy — Streamlit will build the app and serve it at a unique URL you can share.
+
 ## Environment Variables
 If you have secrets, create `.env` files in `backend/` or `frontend/` as needed.
 Do not commit them. See `.gitignore`.
