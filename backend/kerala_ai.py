@@ -8,9 +8,20 @@ from typing import Any, Dict, List, Tuple
 
 import joblib
 import numpy as np
+import sys
+import os
+
+# Get the path to the current folder (backend)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Force add this folder to Python's search path if it's not there
+if current_dir not in sys.path:
+    sys.path.append(current_dir)
+
+# Now import directly (Python now knows to look in this folder)
+from hybrid_engine import HybridEngine
 
 try:  # Package-relative imports when running via `backend.main`
-    from .hybrid_engine import HybridEngine
     from .suitability_engine import calculate_all_suitabilities, get_top_recommendations
     from .crop_database import (
         CROP_REQUIREMENTS,
@@ -18,7 +29,6 @@ try:  # Package-relative imports when running via `backend.main`
         get_crop_descriptions,
     )
 except ImportError:  # Direct execution / Streamlit path
-    from hybrid_engine import HybridEngine
     from suitability_engine import calculate_all_suitabilities, get_top_recommendations
     from crop_database import (
         CROP_REQUIREMENTS,
